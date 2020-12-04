@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/gorilla/mux"
+	. "goblog/config"
+	"goblog/routes"
 	"net/http"
+	"strings"
 )
 
 func defaultHandlerFunc(w http.ResponseWriter, r *http.Request) {
@@ -18,14 +20,43 @@ func defaultHandlerFunc(w http.ResponseWriter, r *http.Request) {
 }
 
 func aboutHandlerFunc(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html;charset=utf-8")
 	fmt.Fprint(w, "此博客是用以记录编程笔记，如您有反馈或建议，请联系 "+
 		"<a href=\"mailto:summer@example.com\">summer@example.com</a>")
 }
 
+func forceMiddleWare(handler http.Handler) http.Handler {
+	return http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
+		writer.Header().Set("Content-Type", "application/json;charset=utf-8")
+		writer.Header().Set("Token", "123456")
+		handler.ServeHTTP(writer, request)
+	})
+}
+
+func trimUrlPath(handler http.Handler) http.Handler {
+	return http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
+		if request.URL.Path != "/" {
+			request.URL.Path = strings.TrimSuffix(request.URL.Path, "/")
+		}
+		handler.ServeHTTP(writer, request)
+	})
+}
+
 func main() {
-	router := mux.NewRouter()
-	router.HandleFunc("/", defaultHandlerFunc)
-	router.HandleFunc("/about", aboutHandlerFunc)
-	http.ListenAndServe(":8989", router)
+	startWebServer()
+}
+
+func startWebServer() {
+	fmt.Println("Service Start")
+	config := LoadConfig()
+	router := routes.NewRouter()
+
+	//处理静态资源
+	assets := http.FileServer(http.Dir(config.App.Static))
+	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", assets))
+
+	err := http.ListenAndServe(config.App.Address, router)
+	if err != nil {
+		fmt.Println("Start Service Error ", err)
+	}
+	fmt.Println("Service Running")
 }
