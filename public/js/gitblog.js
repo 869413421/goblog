@@ -809,7 +809,7 @@ $.ajax({
     headers: {
         Accept: 'application/json',
     },
-    url: 'config.json',
+    url: 'static/config.json',
     success: function(data) {
         new gitblog(data).init();
     }

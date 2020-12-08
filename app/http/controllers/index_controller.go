@@ -1,7 +1,7 @@
-package Controllers
+package controllers
 
 import (
-	"fmt"
+	"goblog/pkg/logger"
 	"net/http"
 )
 
@@ -9,5 +9,5 @@ type IndexController struct {
 }
 
 func (controller *IndexController) Home(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "home")
+	logger.Info("logs")
 }

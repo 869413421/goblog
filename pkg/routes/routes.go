@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"goblog/app/Http/Controllers"
+	"goblog/app/http/controllers"
 	"net/http"
 )
 
@@ -19,6 +19,7 @@ var webRoutes = WebRoutes{
 		Name:    "home",
 		Method:  "get",
 		Pattern: "/",
-		Handle:  new(Controllers.IndexController).Home,
+		Handle:  new(controllers.IndexController).Home,
 	},
 }
+

@@ -10,7 +10,7 @@ import (
 type App struct {
 	Address string
 	Static  string
-	Logs    string
+	Log     string
 }
 
 type Configuration struct {
