@@ -16,6 +16,8 @@ func init() {
 	for _, route := range webRoutes {
 		Router.Methods(route.Method).Name(route.Name).Path(route.Pattern).Handler(route.Handle)
 	}
+
+	Router.NotFoundHandler = notFountHandler
 }
 
 func Name2URL(routeName string, pairs ...string) string {

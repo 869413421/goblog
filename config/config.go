@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"sync"
+	"time"
 )
 
 type App struct {
@@ -13,8 +14,20 @@ type App struct {
 	Log     string
 }
 
+type Db struct {
+	Driver                string
+	Address               string
+	Database              string
+	User                  string
+	Password              string
+	MaxConnections        int
+	MaxIdeConnections     int
+	ConnectionMaxLifeTime time.Duration
+}
+
 type Configuration struct {
 	App App
+	Db  Db
 }
 
 var config *Configuration

@@ -9,6 +9,9 @@
     "Address": "47.94.155.227:3306",
     "Database": "chitchat",
     "User": "root",
-    "Password": "Ym135168."
+    "Password": "Ym135168.",
+    "MaxConnections": 100,
+    "MaxIdeConnections": 25,
+    "ConnectionMaxLifeTime": 5
   }
 }
