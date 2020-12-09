@@ -1,4 +1,5 @@
-{{define "layout"}}
+{{ define "layout" }}
+
     <!DOCTYPE HTML>
     <html>
     <head>
@@ -33,7 +34,9 @@
                 today!
             </p>
         </div>
-        {{ template "content"}}
+
+        {{ template "content" .}}
+
         <div style="text-align: center">
             <ul class="pagination" id="pages" style="display: none"></ul>
         </div>
@@ -66,4 +69,5 @@
         });
     </script>
     </html>
+
 {{ end }}

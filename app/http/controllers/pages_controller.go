@@ -4,24 +4,14 @@ import (
 	"fmt"
 	"goblog/pkg/render"
 	"net/http"
-	"time"
 )
 
 type PagesController struct {
 }
 
-type User struct {
-	Id        int
-	Uuid      string
-	Name      string
-	Email     string
-	Password  string
-	CreatedAt time.Time
-}
-
 // Home 首页
 func (*PagesController) Home(w http.ResponseWriter, r *http.Request) {
-	render.GeneratedHTML(w,nil,"home")
+	render.GenerateHTML(w, nil, "layout", "home")
 }
 
 // About 关于我们页面
