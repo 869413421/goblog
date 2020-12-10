@@ -24,7 +24,7 @@ func init() {
 			Net:                  "tcp",
 			AllowNativePasswords: true,
 		}
-		println(dbConfig.FormatDSN(), config.Db.Address)
+
 		DB, err = sql.Open(config.Db.Driver, dbConfig.FormatDSN())
 		if err != nil {
 			log.Fatalln(err, "open mysql err")

@@ -11,7 +11,8 @@
     "state": "open"
   },
   "menu": {
-    "首页": "./"
+    "首页": "./",
+    "注册": "./"
   },
   "friends": {
     "imuncle": "https://imuncle.github.io"

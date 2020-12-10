@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"goblog/bootstrap"
 	. "goblog/config"
 	"goblog/pkg/routes"
 	"net/http"
@@ -20,6 +21,8 @@ func startWebServer() {
 	//处理静态资源
 	assets := http.FileServer(http.Dir(config.App.Static))
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", assets))
+	//初始化gorm
+	bootstrap.SetupDB()
 	//监听端口
 	err := http.ListenAndServe(config.App.Address, router)
 	fmt.Println("Server Running")
