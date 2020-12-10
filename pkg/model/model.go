@@ -6,6 +6,7 @@ import (
 	"goblog/pkg/logger"
 	mysql2 "gorm.io/driver/mysql"
 	"gorm.io/gorm"
+	gloger "gorm.io/gorm/logger"
 )
 
 var DB *gorm.DB
@@ -28,7 +29,9 @@ func ConnectDB() *gorm.DB {
 		DSN: dsn,
 	})
 
-	DB, err = gorm.Open(dialector, &gorm.Config{})
+	DB, err = gorm.Open(dialector, &gorm.Config{
+		Logger: gloger.Default.LogMode(gloger.Info),
+	})
 
 	if err != nil {
 		logger.Danger(err, "gorm open err")

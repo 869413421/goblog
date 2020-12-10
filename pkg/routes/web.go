@@ -33,6 +33,12 @@ var webRoutes = WebRoutes{
 		Pattern: "/articles/{id:[0-9]+}",
 		Handle:  new(controllers.ArticlesController).Show,
 	},
+	{
+		Name:    "articles.create",
+		Method:  "get",
+		Pattern: "/articles/create",
+		Handle:  new(controllers.ArticlesController).Create,
+	},
 }
 
 var notFountHandler = http.HandlerFunc(new(controllers.PagesController).NotFound)
