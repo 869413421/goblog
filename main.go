@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"goblog/bootstrap"
 	. "goblog/config"
-	"goblog/pkg/routes"
 	"net/http"
 )
 
@@ -17,7 +16,7 @@ func startWebServer() {
 	//初始化配置
 	config := LoadConfig()
 	//初始化路由
-	router := routes.Router
+	router := bootstrap.SetupRoute()
 	//处理静态资源
 	assets := http.FileServer(http.Dir(config.App.Static))
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", assets))

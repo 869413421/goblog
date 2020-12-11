@@ -3,6 +3,7 @@ package controllers
 import (
 	"fmt"
 	"goblog/pkg/view"
+	"html/template"
 	"net/http"
 )
 
@@ -24,4 +25,10 @@ func (*PagesController) About(w http.ResponseWriter, r *http.Request) {
 func (*PagesController) NotFound(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusNotFound)
 	fmt.Fprint(w, "<h1>请求页面未找到 :(</h1><p>如有疑惑，请联系我们。</p>")
+}
+
+// 后台首页
+func (*PagesController) AdminHome(w http.ResponseWriter, r *http.Request) {
+	t, _ := template.ParseFiles("resources/views/layout.admin.html")
+	t.Execute(w, nil)
 }

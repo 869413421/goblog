@@ -1,19 +1,42 @@
 {{ define "content" }}
-    <div class="container">
-        <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1">
-            <ul id="issue-list" class="main_content" style="padding-left: 0px; opacity: 1; transform: translateY(0px);">
-                <br>
-                <h4 class="title">内容加载中...</h4>
-                </br>
-            </ul>
-        </div>
-        <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 visible-lg visible-md"
-             style="margin: 72px auto 0 auto;">
-            <a style="line-height:1.1;font-weight:700;cursor:pointer;color:#808080;text-decoration: none">FEATURED
-                TAGS</a>
-            <div class="tags" style="margin-top:10px" id="tags"></div>
-            <hr>
-        </div>
-    </div>
+
+    <main class="article-list fn__clear">
+        <article class="item">
+            <div class="item__container">
+                <div class="item__cover" style="background-image: url(images/20191224.jpg)"></div>
+                <div rel="bookmark" class="item__abstract">
+                    <a pjax-title="数据结构" href="http://47.94.155.227:8080/articles/2020/08/27/1598543341101.html">
+                        什么是数据结构 数据结构就是按照一定的逻辑把元素按照一定关系进行存储的数据 数据结构分类 可以分为逻辑机构和物理结构两大类 逻辑结构
+                        1.集合机构，指的是一堆没有任何关系的数据存储在一个集合中，它们是平级的 2.线性结构，所有的的数据都存在1对1的关系、 3.树形结构，树状机构中存在着1对多的关系
+                        4.图形结构，图形结构中存储着多对多的复杂关系 物理结构 1.顺序结构，所有的数据都是存储在一个连续内存当中的，它的逻辑关系和物理关系是一致的。
+                        2.链式存储结构，在链式存储结构中，存储单元可以是连续的也可以是不连续的，元素之间不能反映元素的逻辑关系，只存储元素的引用地址。根据指针来确定彼此的逻辑关系 线性表
+                        线性表是最基本，最简单的数据结构，一个线性表是一组拥有相同特征的元素的有限序列 线性表特征 表中第一个元素没有前驱，它是线性表的头结点。 表中最后一个元素没有后继，它是线性表的尾结点。
+                        除了第一个和最后一个元素外，其他元素都拥有前驱和后续结点。 线性表的分类 根据不同的存储方式分类，线性表可以分为顺序表和链表 顺序表 顺序表是一种以数组方式进行表示的线性表，顺序....
+                    </a>
+                </div>
+                <div class="item__slant"></div>
+                <div class="item__slant item__slant--white"></div>
+                <div class="item__main">
+                    <span class="item__sup">
+                            <sup class="ft__red">
+                                有更新！
+                            </sup>
+                    </span>
+                    <h2 class="item__title">
+                        <a rel="bookmark" href="http://47.94.155.227:8080/articles/2020/08/27/1598543341101.html">
+                            数据结构
+                        </a>
+                    </h2>
+                    <div class="ico ico--0"></div>
+                    <a rel="tag" class="item__tag" href="http://47.94.155.227:8080/tags/%E5%BE%85%E5%88%86%E7%B1%BB">
+                        待分类
+                    </a>
+                </div>
+            </div>
+        </article>
+    </main>
+    <nav class="pagination">
+        <span class="pagination__item pagination__item--current">1</span>
+    </nav>
 
 {{ end }}

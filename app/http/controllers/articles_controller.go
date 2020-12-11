@@ -3,7 +3,7 @@ package controllers
 import (
 	"fmt"
 	"goblog/pkg/model/article"
-	"goblog/pkg/routes"
+	"goblog/pkg/route"
 	"gorm.io/gorm"
 	"net/http"
 )
@@ -16,7 +16,7 @@ func (controller *ArticlesController) Create(w http.ResponseWriter, r *http.Requ
 }
 
 func (controller *ArticlesController) Show(w http.ResponseWriter, r *http.Request) {
-	id := routes.GetRouteVariable("id", r)
+	id := route.GetRouteVariable("id", r)
 	art, err := article.GetById(id)
 	if err != nil {
 		if err == gorm.ErrRecordNotFound {

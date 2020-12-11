@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"github.com/gorilla/mux"
 	"goblog/app/http/controllers"
 	"net/http"
 )
@@ -14,7 +15,7 @@ type WebRouter struct {
 
 type WebRoutes []WebRouter
 
-var webRoutes = WebRoutes{
+var Routes = WebRoutes{
 	{
 		Name:    "home",
 		Method:  "get",
@@ -39,6 +40,19 @@ var webRoutes = WebRoutes{
 		Pattern: "/articles/create",
 		Handle:  new(controllers.ArticlesController).Create,
 	},
+	{
+		Name:    "admin.home",
+		Method:  "get",
+		Pattern: "/admin/home",
+		Handle:  new(controllers.PagesController).AdminHome,
+	},
 }
 
-var notFountHandler = http.HandlerFunc(new(controllers.PagesController).NotFound)
+var NotFountHandler = http.HandlerFunc(new(controllers.PagesController).NotFound)
+
+func RegisterWebRoutes(router *mux.Router) {
+	//装载所有路由
+	for _, route := range Routes {
+		router.Methods(route.Method).Name(route.Name).Path(route.Pattern).Handler(route.Handle)
+	}
+}
