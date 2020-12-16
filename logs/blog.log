@@ -23,3 +23,5 @@ INFO 2020/12/09 17:09:00 logger.go:27: logs
 INFO 2020/12/09 17:09:01 logger.go:27: logs
 INFO 2020/12/09 17:09:01 logger.go:27: logs
 INFO 2020/12/09 17:14:18 logger.go:27: logs
+ERROR 2020/12/16 17:19:32 logger.go:33: Error 1146: Table 'chitchat.articles' doesn't exist ArticlesController Show Error
+ERROR 2020/12/16 17:45:48 logger.go:33: Error 1146: Table 'chitchat.articles' doesn't exist ArticlesController Index Error

@@ -1,218 +1,207 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <meta name="theme-color" content="#3b3e43">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes"/>
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no"/>
-    <title>后台管理 - qingshui</title>
-    <meta name="description" content="MyBlog"/>
-    <meta property="og:description" content="MyBlog"/>
-    <meta name="keywords" content="Solo,PHP,博客"/>
-    <link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-32.png"/>
-    <link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-32.png">
-    <link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-32.png">
-    <meta name="copyright" content="B3log"/>
-    <meta http-equiv="Window-target" content="_top"/>
-    <meta property="og:locale" content="zh_CN"/>
-    <meta property="og:title" content="后台管理 - qingshui"/>
-    <meta property="og:site_name" content="qingshui"/>
-    <meta property="og:image" content="https://static.b3log.org/images/brand/solo-32.png"/>
-    <link rel="search" type="application/opensearchdescription+xml" title="后台管理 - qingshui" href="/opensearch.xml">
-    <link rel="canonical" href="http://47.94.155.227:8080/admin-index.do">
-    <link type="text/css" rel="stylesheet" href="/static/css/admin.css"/>
-    <meta name="robots" content="fn__none"/>
+{{ define "layout" }}
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+        <meta name="theme-color" content="#3b3e43">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no"/>
+        <title>后台管理 - qingshui</title>
+        <meta name="description" content="MyBlog"/>
+        <meta property="og:description" content="MyBlog"/>
+        <meta name="keywords" content="Solo,PHP,博客"/>
+        <link rel="icon" type="image/png" href="https://static.b3log.org/images/brand/solo-32.png"/>
+        <link rel="apple-touch-icon" href="https://static.b3log.org/images/brand/solo-32.png">
+        <link rel="shortcut icon" type="image/x-icon" href="https://static.b3log.org/images/brand/solo-32.png">
+        <meta name="copyright" content="B3log"/>
+        <meta http-equiv="Window-target" content="_top"/>
+        <meta property="og:locale" content="zh_CN"/>
+        <meta property="og:title" content="后台管理 - qingshui"/>
+        <meta property="og:site_name" content="qingshui"/>
+        <meta property="og:image" content="https://static.b3log.org/images/brand/solo-32.png"/>
+        <link rel="search" type="application/opensearchdescription+xml" title="后台管理 - qingshui" href="/opensearch.xml">
+        <link rel="canonical" href="http://47.94.155.227:8080/admin-index.do">
+        <link type="text/css" rel="stylesheet" href="/static/css/admin.css"/>
+        <meta name="robots" content="fn__none"/>
 
-</head>
-<body onhashchange="admin.setCurByHash();">
-<div class="tip tip-msg"><span id="tipMsg"></span></div>
-<div id="allPanel">
-    <div id="top">
-        <a href="http://47.94.155.227:8080" target="_blank" class="hover">
-            Blog
-        </a>
-        <span class="icon-unordered-list top__menu fn__none"
-              onclick="admin.toggleMenu()"></span>
-        <span class="fn__right">
+    </head>
+    <body onhashchange="admin.setCurByHash();">
+    <div class="tip tip-msg"><span id="tipMsg"></span></div>
+    <div id="allPanel">
+        <div id="top">
+            <a href="http://47.94.155.227:8080" target="_blank" class="hover">
+                Blog
+            </a>
+            <span class="icon-unordered-list top__menu fn__none"
+                  onclick="admin.toggleMenu()"></span>
+            <span class="fn__right">
                     <a href="http://47.94.155.227:8080" title='首页'>
                         <div class="avatar" style="background-image: url(images/1583920055848.jpeg)"></div>
                         qingshui666
                     </a>
                     <a href='javascript:admin.logout();' title='登出'>登出</a>
                 </span>
-    </div>
-    <div id="tabs">
-        <ul>
-            <li>
-                <div id="tabs_main">
-                    <a href="#main">
-                        <span class="icon-refresh"></span> 后台首页
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div id="tabArticleTitle" class="tab-current" onclick="admin.collapseNav(this)">
-                    <span class="icon-article"></span>
-                    文章
-                    <span class="icon-chevron-up fn__right"></span>
-                </div>
-                <ul id="tabArticleMgt">
-                    <li>
-                        <div id="tabs_article">
-                            <a href="#article/article" onclick="admin.article.prePost()">发布文章</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div id="tabs_article-list">
-                            <a href="#article/article-list">文章管理</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div id="tabs_draft-list">
-                            <a href="#article/draft-list">草稿夹</a>
-                        </div>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <div id="tabs_comment-list">
-                    <a href="#comment-list">
-                        <span class="icon-cmts"></span> 评论管理
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div id="tabs_about">
-                    <a href="#about">
-                        <span class="icon-info"></span> 关于
-                    </a>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <div class="tabs__bg" onclick="admin.toggleMenu()"></div>
-    <div id="tabsPanel">
-        <div id="tabsPanel_main" class="fn__none"></div>
-        <div id="tabsPanel_article" class="fn__none"></div>
-        <div id="tabsPanel_article-list" class="fn__none"></div>
-        <div id="tabsPanel_draft-list" class="fn__none"></div>
-        <div id="tabsPanel_link-list" class="fn__none"></div>
-        <div id="tabsPanel_preference" class="fn__none"></div>
-        <div id="tabsPanel_theme-list" class="fn__none"></div>
-        <div id="tabsPanel_category-list" class="fn__none"></div>
-        <div id="tabsPanel_page-list" class="fn__none"></div>
-        <div id="tabsPanel_others" class="fn__none"></div>
-        <div id="tabsPanel_user-list" class="fn__none"></div>
-        <div id="tabsPanel_comment-list" class="fn__none"></div>
-        <div id="tabsPanel_plugin-list" class="fn__none"></div>
-        <div id="tabsPanel_staticsite" class="fn__none"></div>
-        <div id="tabsPanel_about" class="fn__none"></div>
-    </div>
-    <div class="fn__clear"></div>
-    <div class="footer">
+        </div>
+        <div id="tabs">
+            <ul>
+                <li>
+                    <div id="tabs_main">
+                        <a href="#main">
+                            <span class="icon-refresh"></span> 后台首页
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div id="tabArticleTitle" class="tab-current" onclick="admin.collapseNav(this)">
+                        <span class="icon-article"></span>
+                        文章
+                        <span class="icon-chevron-up fn__right"></span>
+                    </div>
+                    <ul id="tabArticleMgt">
+                        <li>
+                            <div id="tabs_article">
+                                <a href="#article/article" onclick="admin.article.prePost()">发布文章</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div id="tabs_article-list">
+                                <a href="#article/article-list">文章管理</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div id="tabs_draft-list">
+                                <a href="#article/draft-list">草稿夹</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div id="tabs_comment-list">
+                        <a href="#comment-list">
+                            <span class="icon-cmts"></span> 评论管理
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div id="tabs_about">
+                        <a href="#about">
+                            <span class="icon-info"></span> 关于
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="tabs__bg" onclick="admin.toggleMenu()"></div>
+        <div id="tabsPanel">
+            {{ template "content" .}}
+        </div>
+        <div class="fn__clear"></div>
+        <div class="footer">
 
+        </div>
     </div>
-</div>
-<script>
-    var Label = {
-        servePath: "http://47.94.155.227:8080",
-        staticServePath: "http://47.94.155.227:8080",
-        luteAvailable: false,
-        hljsStyle: 'github',
-        langLabel: "zh_CN",
-        version: "3.9.0",
-        staticSite: false,
-        showCodeBlockLn: false,
-    }
-</script>
-<script type="text/javascript">
-    Label.setMobileLabel = '设置为移动端皮肤'
-    Label.pushSuccLabel = '推送完毕，细节请查看日志'
-    Label.pushToHacpaiLabel = '推送到社区'
-    Label.uploadMsg = '获取社区文件存储服务上传凭证异常'
-    Label.uploadToken = ""
-    Label.uploadURL = ""
-    Label.skinDirName = "Pinghsu"
-    Label.userRole = "adminRole"
-    Label.PAGE_SIZE = "20"
-    Label.WINDOW_SIZE = "15"
-    Label.localeString = "zh_CN"
-    Label.version = "3.9.0"
-    Label.reportIssueLabel = 'please report this issue on https://github.com/88250/solo/issues/new'
-    Label.noDataLabel = "该列表很懒，什么都没有留下。。。"
-    Label.linkDescriptionLabel = "链接描述"
-    Label.addressInvalidLabel = "请以协议开头，如: http://"
-    Label.selectLabel = "选择"
-    Label.outOfDateLabel = "您的 Solo 过时了 😢，请下载最新版本："
-    Label.upToDateLabel = "您正在使用最新的 Solo ✨"
-    Label.commentContentLabel = "评论内容"
-    Label.loadingLabel = "载入中...."
-    Label.noCommentLabel = "暂无评论"
-    Label.confirmRemoveLabel = "是否删除"
-    Label.removeLabel = "删除"
-    Label.cancelPutTopLabel = "取消置顶"
-    Label.putTopLabel = "置顶"
-    Label.viewLabel = "浏览"
-    Label.updateLabel = "更新"
-    Label.commentLabel = "评论"
-    Label.titleLabel = "标题"
-    Label.authorLabel = "作者"
-    Label.dateLabel = "日期"
-    Label.pageLabel = "页"
-    Label.gotoLabel = "跳转"
-    Label.permalinkLabel = "链接"
-    Label.titleEmptyLabel = "标题不能为空！"
-    Label.contentEmptyLabel = "内容不能为空！"
-    Label.linkTitleLabel = "链接标题"
-    Label.urlLabel = "URL"
-    Label.addressEmptyLabel = "地址不能为空！"
-    Label.pluginNameLabel = "插件名"
-    Label.statusLabel = "状态"
-    Label.versionLabel = "版本"
-    Label.userNameLabel = "用户名"
-    Label.roleLabel = "角色"
-    Label.administratorLabel = "管理员"
-    Label.categoryLabel = "分类"
-    Label.tagsEmptyLabel = "标签不能为空（请勿包含符号）！"
-    Label.commonUserLabel = "一般用户"
-    Label.articleLabel = "文章"
-    Label.enabledLabel = "已启用"
-    Label.disabledLabel = "已禁用"
-    Label.editorLeaveLabel = "编辑器中还有内容，是否离开？"
-    Label.editorPostLabel = "编辑器中还有内容，是否清空？"
-    Label.enableLabel = "启用"
-    Label.disableLabel = "禁用"
-    Label.settingLabel = "设置"
-    Label.linkEmptyLabel = "链接不能为空"
-    Label.openMethodLabel = "页面打开方式"
-    Label.typeLabel = "类型"
-    Label.notFoundLabel = "找不到！"
-    Label.paramSettingsLabel = "参数设置"
-    Label.nonNegativeIntegerOnlyLabel = "只能为非负整数！"
-    Label.indexTagDisplayCntLabel = "首页标签显示数"
-    Label.indexRecentCommentDisplayCntLabel = "最新评论显示数目"
-    Label.indexMostCommentArticleDisplayCntLabel = "评论最多文章显示数目"
-    Label.indexMostViewArticleDisplayCntLabel = "访问最多文章显示数目"
-    Label.pageSizeLabel = "分页每页显示文章数"
-    Label.windowSizeLabel = "分页页码最大宽度"
-    Label.randomArticlesDisplayCntLabel = "随机阅读显示数目"
-    Label.relevantArticlesDisplayCntLabel = "相关阅读显示数目"
-    Label.externalRelevantArticlesDisplayCntLabel = "站外相关阅读显示数目"
-    Label.nameTooLongLabel = "姓名只能为 2 到 20 个字符！"
-    Label.navLabel = "导航"
-    Label.userLabel = "用户"
-    Label.changeRoleLabel = "改变角色"
-    Label.visitorUserLabel = "访客用户"
-    Label.categoryTooLongLabel = "分类名称只能为 2 到 32 个字符！"
-    Label.descriptionLabel = "描述"
-    Label.previewLabel = '预览'
-</script>
-<script src="/static/js/admin.min.js"></script>
-<link type="text/css" rel="stylesheet" href="/static/css/index_1.css"/>
-<script async src="/static/js/index_1.js"></script>
-</body>
-</html>
+    <script>
+        var Label = {
+            servePath: "http://47.94.155.227:8080",
+            staticServePath: "http://47.94.155.227:8080",
+            luteAvailable: false,
+            hljsStyle: 'github',
+            langLabel: "zh_CN",
+            version: "3.9.0",
+            staticSite: false,
+            showCodeBlockLn: false,
+        }
+    </script>
+    <script type="text/javascript">
+        Label.setMobileLabel = '设置为移动端皮肤'
+        Label.pushSuccLabel = '推送完毕，细节请查看日志'
+        Label.pushToHacpaiLabel = '推送到社区'
+        Label.uploadMsg = '获取社区文件存储服务上传凭证异常'
+        Label.uploadToken = ""
+        Label.uploadURL = ""
+        Label.skinDirName = "Pinghsu"
+        Label.userRole = "adminRole"
+        Label.PAGE_SIZE = "20"
+        Label.WINDOW_SIZE = "15"
+        Label.localeString = "zh_CN"
+        Label.version = "3.9.0"
+        Label.reportIssueLabel = 'please report this issue on https://github.com/88250/solo/issues/new'
+        Label.noDataLabel = "该列表很懒，什么都没有留下。。。"
+        Label.linkDescriptionLabel = "链接描述"
+        Label.addressInvalidLabel = "请以协议开头，如: http://"
+        Label.selectLabel = "选择"
+        Label.outOfDateLabel = "您的 Solo 过时了 😢，请下载最新版本："
+        Label.upToDateLabel = "您正在使用最新的 Solo ✨"
+        Label.commentContentLabel = "评论内容"
+        Label.loadingLabel = "载入中...."
+        Label.noCommentLabel = "暂无评论"
+        Label.confirmRemoveLabel = "是否删除"
+        Label.removeLabel = "删除"
+        Label.cancelPutTopLabel = "取消置顶"
+        Label.putTopLabel = "置顶"
+        Label.viewLabel = "浏览"
+        Label.updateLabel = "更新"
+        Label.commentLabel = "评论"
+        Label.titleLabel = "标题"
+        Label.authorLabel = "作者"
+        Label.dateLabel = "日期"
+        Label.pageLabel = "页"
+        Label.gotoLabel = "跳转"
+        Label.permalinkLabel = "链接"
+        Label.titleEmptyLabel = "标题不能为空！"
+        Label.contentEmptyLabel = "内容不能为空！"
+        Label.linkTitleLabel = "链接标题"
+        Label.urlLabel = "URL"
+        Label.addressEmptyLabel = "地址不能为空！"
+        Label.pluginNameLabel = "插件名"
+        Label.statusLabel = "状态"
+        Label.versionLabel = "版本"
+        Label.userNameLabel = "用户名"
+        Label.roleLabel = "角色"
+        Label.administratorLabel = "管理员"
+        Label.categoryLabel = "分类"
+        Label.tagsEmptyLabel = "标签不能为空（请勿包含符号）！"
+        Label.commonUserLabel = "一般用户"
+        Label.articleLabel = "文章"
+        Label.enabledLabel = "已启用"
+        Label.disabledLabel = "已禁用"
+        Label.editorLeaveLabel = "编辑器中还有内容，是否离开？"
+        Label.editorPostLabel = "编辑器中还有内容，是否清空？"
+        Label.enableLabel = "启用"
+        Label.disableLabel = "禁用"
+        Label.settingLabel = "设置"
+        Label.linkEmptyLabel = "链接不能为空"
+        Label.openMethodLabel = "页面打开方式"
+        Label.typeLabel = "类型"
+        Label.notFoundLabel = "找不到！"
+        Label.paramSettingsLabel = "参数设置"
+        Label.nonNegativeIntegerOnlyLabel = "只能为非负整数！"
+        Label.indexTagDisplayCntLabel = "首页标签显示数"
+        Label.indexRecentCommentDisplayCntLabel = "最新评论显示数目"
+        Label.indexMostCommentArticleDisplayCntLabel = "评论最多文章显示数目"
+        Label.indexMostViewArticleDisplayCntLabel = "访问最多文章显示数目"
+        Label.pageSizeLabel = "分页每页显示文章数"
+        Label.windowSizeLabel = "分页页码最大宽度"
+        Label.randomArticlesDisplayCntLabel = "随机阅读显示数目"
+        Label.relevantArticlesDisplayCntLabel = "相关阅读显示数目"
+        Label.externalRelevantArticlesDisplayCntLabel = "站外相关阅读显示数目"
+        Label.nameTooLongLabel = "姓名只能为 2 到 20 个字符！"
+        Label.navLabel = "导航"
+        Label.userLabel = "用户"
+        Label.changeRoleLabel = "改变角色"
+        Label.visitorUserLabel = "访客用户"
+        Label.categoryTooLongLabel = "分类名称只能为 2 到 32 个字符！"
+        Label.descriptionLabel = "描述"
+        Label.previewLabel = '预览'
+    </script>
+    <script src="/static/js/admin.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/static/css/index_1.css"/>
+    <script async src="/static/js/index_1.js"></script>
+    </body>
+    </html>
+
+{{ end }}

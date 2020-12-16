@@ -29,6 +29,12 @@ var Routes = WebRoutes{
 		Handle:  new(controllers.PagesController).About,
 	},
 	{
+		Name:    "articles.index",
+		Method:  "get",
+		Pattern: "/articles",
+		Handle:  new(controllers.ArticlesController).Index,
+	},
+	{
 		Name:    "articles.show",
 		Method:  "get",
 		Pattern: "/articles/{id:[0-9]+}",
