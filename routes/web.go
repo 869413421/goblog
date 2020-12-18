@@ -47,6 +47,30 @@ var Routes = WebRoutes{
 		Handle:  new(controllers.ArticlesController).Create,
 	},
 	{
+		Name:    "articles.store",
+		Method:  "POST",
+		Pattern: "/articles/store",
+		Handle:  new(controllers.ArticlesController).Store,
+	},
+	{
+		Name:    "articles.edit",
+		Method:  "get",
+		Pattern: "/articles/{id:[0-9]+}/edit",
+		Handle:  new(controllers.ArticlesController).Edit,
+	},
+	{
+		Name:    "articles.update",
+		Method:  "POST",
+		Pattern: "/articles/{id:[0-9]+}/update",
+		Handle:  new(controllers.ArticlesController).Update,
+	},
+	{
+		Name:    "articles.delete",
+		Method:  "POST",
+		Pattern: "/articles/{id:[0-9]+}/delete",
+		Handle:  new(controllers.ArticlesController).Delete,
+	},
+	{
 		Name:    "admin.home",
 		Method:  "get",
 		Pattern: "/admin/home",

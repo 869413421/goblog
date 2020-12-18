@@ -1,0 +1,9 @@
+{{ define "content" }}
+{{/*    <p>ID： {{ .ID }}</p>*/}}
+    <p>标题： {{ .Title }}</p>
+    <p>内容：{{ .Body }}</p>
+
+    <form action="{{ .URL }}" method="post">
+        <button type="submit" onclick="return confirm('删除动作不可逆，请确定是否继续')">删除</button>
+    </form>
+{{ end }}
