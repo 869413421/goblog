@@ -8,7 +8,6 @@ import (
 	"goblog/pkg/view"
 	"gorm.io/gorm"
 	"net/http"
-	"strconv"
 	"unicode/utf8"
 )
 
@@ -21,24 +20,19 @@ func (controller *ArticlesController) Index(w http.ResponseWriter, r *http.Reque
 		logger.Danger(err, "ArticlesController Index Error")
 		fmt.Fprintln(w, err)
 	}
-	view.GenerateHTML(w, data, "layout.admin", "article/index")
+
+	view.Render(w, data, "article.index")
 }
 
 type ArticlesFormData struct {
 	Title, Body string
 	URL         string
 	Errors      map[string]string
+	Article     article.Article
 }
 
 func (controller *ArticlesController) Create(w http.ResponseWriter, r *http.Request) {
-	storeUrl := route.Name2URL("articles.store")
-	data := ArticlesFormData{
-		Title:  "",
-		Body:   "",
-		URL:    storeUrl,
-		Errors: nil,
-	}
-	view.GenerateHTML(w, data, "layout.admin", "article/edit")
+	view.Render(w, ArticlesFormData{}, "article.create", "article._form_field")
 }
 func ValidateArticlesFromData(title string, body string) map[string]string {
 	errors := make(map[string]string)
@@ -64,13 +58,13 @@ func (controller *ArticlesController) Store(w http.ResponseWriter, r *http.Reque
 	if len(errors) > 0 {
 		storeUrl := route.Name2URL("articles.create")
 		data := ArticlesFormData{
-			Title:  "",
-			Body:   "",
+			Title:  title,
+			Body:   body,
 			URL:    storeUrl,
 			Errors: errors,
 		}
 
-		view.GenerateHTML(w, data, "layout.admin", "article/edit")
+		view.Render(w, data, "article.create", "article._form_field")
 	}
 
 	_article := article.Article{
@@ -83,7 +77,7 @@ func (controller *ArticlesController) Store(w http.ResponseWriter, r *http.Reque
 		w.WriteHeader(http.StatusInternalServerError)
 		fmt.Fprintf(w, "创建失败，服务器错误")
 	}
-	fmt.Fprintf(w, "创建成功，ID:"+strconv.FormatInt(_article.ID, 10))
+	fmt.Fprintf(w, "创建成功，ID:"+_article.GetStringID())
 }
 
 func (controller *ArticlesController) Show(w http.ResponseWriter, r *http.Request) {
@@ -100,14 +94,8 @@ func (controller *ArticlesController) Show(w http.ResponseWriter, r *http.Reques
 			fmt.Fprintln(w, err)
 		}
 	}
-	deleteUrl := route.Name2URL("articles.delete", "id", id)
-	data := ArticlesFormData{
-		Title:  _article.Title,
-		Body:   _article.Body,
-		URL:    deleteUrl,
-		Errors: nil,
-	}
-	view.GenerateHTML(w, data, "layout.admin", "article/show")
+
+	view.Render(w, _article, "article.show")
 }
 
 func (controller *ArticlesController) Edit(w http.ResponseWriter, r *http.Request) {
@@ -126,13 +114,14 @@ func (controller *ArticlesController) Edit(w http.ResponseWriter, r *http.Reques
 	}
 	updateUrl := route.Name2URL("articles.update", "id", id)
 	data := ArticlesFormData{
-		Title:  _article.Title,
-		Body:   _article.Body,
-		URL:    updateUrl,
-		Errors: nil,
+		Title:   _article.Title,
+		Body:    _article.Body,
+		URL:     updateUrl,
+		Article: _article,
+		Errors:  nil,
 	}
 
-	view.GenerateHTML(w, data, "layout.admin", "article/edit")
+	view.Render(w, data, "article.edit", "article._form_field")
 }
 
 func (controller *ArticlesController) Update(w http.ResponseWriter, r *http.Request) {
@@ -163,10 +152,11 @@ func (controller *ArticlesController) Update(w http.ResponseWriter, r *http.Requ
 			Errors: errors,
 		}
 
-		view.GenerateHTML(w, data, "layout.admin", "article/edit")
+		view.Render(w, data, "article.create", "article._form_field")
 	}
 	_article.Title = title
 	_article.Body = body
+
 	rowsAffected, err := _article.Update()
 
 	if err != nil {

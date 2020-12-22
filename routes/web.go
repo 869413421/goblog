@@ -85,4 +85,6 @@ func RegisterWebRoutes(router *mux.Router) {
 	for _, route := range Routes {
 		router.Methods(route.Method).Name(route.Name).Path(route.Pattern).Handler(route.Handle)
 	}
+	//全局中间件
+	//router.Use(middlewares.ForceHTML)
 }

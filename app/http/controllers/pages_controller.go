@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"fmt"
-	"goblog/pkg/view"
 	"html/template"
 	"net/http"
 )
@@ -12,7 +11,7 @@ type PagesController struct {
 
 // Home 首页
 func (*PagesController) Home(w http.ResponseWriter, r *http.Request) {
-	view.GenerateHTML(w, nil, "layout", "home")
+
 }
 
 // About 关于我们页面

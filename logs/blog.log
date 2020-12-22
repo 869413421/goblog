@@ -25,3 +25,9 @@ INFO 2020/12/09 17:09:01 logger.go:27: logs
 INFO 2020/12/09 17:14:18 logger.go:27: logs
 ERROR 2020/12/16 17:19:32 logger.go:33: Error 1146: Table 'chitchat.articles' doesn't exist ArticlesController Show Error
 ERROR 2020/12/16 17:45:48 logger.go:33: Error 1146: Table 'chitchat.articles' doesn't exist ArticlesController Index Error
+ERROR 2020/12/22 16:39:23 logger.go:33: open article/index: The system cannot find the path specified. render error
+ERROR 2020/12/22 16:40:22 logger.go:33: open article/index: The system cannot find the path specified. render error
+ERROR 2020/12/22 17:00:04 logger.go:33: Error 1366: Incorrect string value: '\xE6\xB5\x8B\xE8\xAF\x95...' for column 'title' at row 1 model article update error
+ERROR 2020/12/22 17:01:16 logger.go:33: Error 1366: Incorrect string value: '\xE6\xB5\x8B\xE8\xAF\x95...' for column 'title' at row 1 model article update error
+ERROR 2020/12/22 17:02:43 logger.go:33: Error 1366: Incorrect string value: '\xE6\xB5\x8B\xE8\xAF\x95...' for column 'title' at row 1 model article update error
+ERROR 2020/12/22 17:05:13 logger.go:33: Error 1366: Incorrect string value: '\xE6\xB5\x8B\xE8\xAF\x95...' for column 'title' at row 1 model article update error
