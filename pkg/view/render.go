@@ -9,7 +9,17 @@ import (
 	"strings"
 )
 
+type D map[string]interface{}
+
 func Render(writer io.Writer, data interface{}, tmplFiles ...string) {
+	RenderTemplate(writer, "app", data, tmplFiles...)
+}
+
+func RenderSimple(writer io.Writer, data interface{}, tmplFiles ...string) {
+	RenderTemplate(writer, "simple", data, tmplFiles...)
+}
+
+func RenderTemplate(writer io.Writer, name string, data interface{}, tmplFiles ...string) {
 	//1.定义视图根目录
 	viewDir := "resources/views/"
 
@@ -35,6 +45,6 @@ func Render(writer io.Writer, data interface{}, tmplFiles ...string) {
 		logger.Danger(err, "render error")
 	}
 	//5.渲染模板
-	tmpl.ExecuteTemplate(writer, "app", data)
+	tmpl.ExecuteTemplate(writer, name, data)
 
 }

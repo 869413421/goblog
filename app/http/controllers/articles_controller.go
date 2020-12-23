@@ -24,15 +24,8 @@ func (controller *ArticlesController) Index(w http.ResponseWriter, r *http.Reque
 	view.Render(w, data, "article.index")
 }
 
-type ArticlesFormData struct {
-	Title, Body string
-	URL         string
-	Errors      map[string]string
-	Article     article.Article
-}
-
 func (controller *ArticlesController) Create(w http.ResponseWriter, r *http.Request) {
-	view.Render(w, ArticlesFormData{}, "article.create", "article._form_field")
+	view.Render(w, view.D{}, "article.create", "article._form_field")
 }
 func ValidateArticlesFromData(title string, body string) map[string]string {
 	errors := make(map[string]string)
@@ -56,12 +49,10 @@ func (controller *ArticlesController) Store(w http.ResponseWriter, r *http.Reque
 
 	errors := ValidateArticlesFromData(title, body)
 	if len(errors) > 0 {
-		storeUrl := route.Name2URL("articles.create")
-		data := ArticlesFormData{
-			Title:  title,
-			Body:   body,
-			URL:    storeUrl,
-			Errors: errors,
+		data := view.D{
+			"Title":  title,
+			"Body":   body,
+			"Errors": errors,
 		}
 
 		view.Render(w, data, "article.create", "article._form_field")
@@ -112,13 +103,12 @@ func (controller *ArticlesController) Edit(w http.ResponseWriter, r *http.Reques
 			fmt.Fprintln(w, err)
 		}
 	}
-	updateUrl := route.Name2URL("articles.update", "id", id)
-	data := ArticlesFormData{
-		Title:   _article.Title,
-		Body:    _article.Body,
-		URL:     updateUrl,
-		Article: _article,
-		Errors:  nil,
+
+	data := view.D{
+		"Title":   _article.Title,
+		"Body":    _article.Body,
+		"Article": _article,
+		"Errors":  nil,
 	}
 
 	view.Render(w, data, "article.edit", "article._form_field")
@@ -144,12 +134,10 @@ func (controller *ArticlesController) Update(w http.ResponseWriter, r *http.Requ
 
 	errors := ValidateArticlesFromData(title, body)
 	if len(errors) > 0 {
-		updateUrl := route.Name2URL("articles.edit", "id", id)
-		data := ArticlesFormData{
-			Title:  title,
-			Body:   body,
-			URL:    updateUrl,
-			Errors: errors,
+		data := view.D{
+			"Title":  title,
+			"Body":   body,
+			"Errors": nil,
 		}
 
 		view.Render(w, data, "article.create", "article._form_field")

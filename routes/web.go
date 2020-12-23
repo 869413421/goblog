@@ -76,6 +76,18 @@ var Routes = WebRoutes{
 		Pattern: "/admin/home",
 		Handle:  new(controllers.PagesController).AdminHome,
 	},
+	{
+		Name:    "auth.register",
+		Method:  "get",
+		Pattern: "/auth/register",
+		Handle:  new(controllers.AuthController).Register,
+	},
+	{
+		Name:    "auth.do-register",
+		Method:  "get",
+		Pattern: "/auth/do-register",
+		Handle:  new(controllers.AuthController).DoRegister,
+	},
 }
 
 var NotFountHandler = http.HandlerFunc(new(controllers.PagesController).NotFound)

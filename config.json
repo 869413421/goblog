@@ -7,7 +7,7 @@
   "Db": {
     "Driver": "mysql",
     "Address": "47.94.155.227:3306",
-    "Database": "chitchat",
+    "Database": "goblog",
     "User": "root",
     "Password": "Ym135168.",
     "MaxConnections": 100,
