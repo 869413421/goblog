@@ -88,6 +88,18 @@ var Routes = WebRoutes{
 		Pattern: "/auth/do-register",
 		Handle:  new(controllers.AuthController).DoRegister,
 	},
+	{
+		Name:    "auth.login",
+		Method:  "get",
+		Pattern: "/auth/login",
+		Handle:  new(controllers.AuthController).Login,
+	},
+	{
+		Name:    "auth.do-login",
+		Method:  "POST",
+		Pattern: "/auth/do-login",
+		Handle:  new(controllers.AuthController).DoLogin,
+	},
 }
 
 var NotFountHandler = http.HandlerFunc(new(controllers.PagesController).NotFound)

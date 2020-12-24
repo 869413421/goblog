@@ -48,3 +48,12 @@ func (controller *AuthController) DoRegister(w http.ResponseWriter, r *http.Requ
 
 	fmt.Fprint(w, "创建用户成功，ID:"+_user.GetStringID())
 }
+
+func (controller *AuthController) Login(w http.ResponseWriter, r *http.Request) {
+	view.RenderSimple(w, view.D{}, "auth.login")
+}
+
+
+func (controller *AuthController) DoLogin(w http.ResponseWriter, r *http.Request) {
+	view.RenderSimple(w, view.D{}, "auth.login")
+}
