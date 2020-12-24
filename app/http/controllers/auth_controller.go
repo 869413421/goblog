@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"fmt"
+	"goblog/app/http/requests"
 	"goblog/pkg/model/user"
 	"goblog/pkg/view"
 	"net/http"
@@ -19,15 +20,26 @@ func (controller *AuthController) DoRegister(w http.ResponseWriter, r *http.Requ
 	name := r.PostFormValue("name")
 	email := r.PostFormValue("email")
 	password := r.PostFormValue("password")
-	//2.失败跳转回注册视图
+	password_comfirm := r.PostFormValue("password_comfirm")
 
-	//3.验证成功入库，跳转首页
 	_user := user.User{
-		Name:     name,
-		Email:    email,
-		Password: password,
+		Name:            name,
+		Email:           email,
+		Password:        password,
+		PasswordComfirm: password_comfirm,
 	}
 
+	//2.失败跳转回注册视图
+	errs := requests.ValidateRegistrationForm(_user)
+	if len(errs) > 0 {
+		view.RenderSimple(w, view.D{
+			"Errors": errs,
+			"User":   _user,
+		}, "auth.register")
+		return
+	}
+
+	//3.验证成功入库，跳转首页
 	_user.Create()
 	if _user.ID <= 0 {
 		fmt.Fprint(w, "创建用户失败")

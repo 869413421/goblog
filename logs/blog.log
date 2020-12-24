@@ -32,3 +32,5 @@ ERROR 2020/12/22 17:01:16 logger.go:33: Error 1366: Incorrect string value: '\xE
 ERROR 2020/12/22 17:02:43 logger.go:33: Error 1366: Incorrect string value: '\xE6\xB5\x8B\xE8\xAF\x95...' for column 'title' at row 1 model article update error
 ERROR 2020/12/22 17:05:13 logger.go:33: Error 1366: Incorrect string value: '\xE6\xB5\x8B\xE8\xAF\x95...' for column 'title' at row 1 model article update error
 ERROR 2020/12/24 13:58:08 logger.go:33: Error 1366: Incorrect string value: '\xE9\xBB\x84\xE4\xBA\x8C...' for column 'name' at row 1 model user create error
+ERROR 2020/12/24 21:50:10 logger.go:33: Error 1062: Duplicate entry '13528685024@163.com' for key 'email' model user create error
+ERROR 2020/12/24 21:50:31 logger.go:33: Error 1062: Duplicate entry '13528685024@163.com' for key 'email' model user create error
