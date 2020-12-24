@@ -84,7 +84,7 @@ var Routes = WebRoutes{
 	},
 	{
 		Name:    "auth.do-register",
-		Method:  "get",
+		Method:  "POST",
 		Pattern: "/auth/do-register",
 		Handle:  new(controllers.AuthController).DoRegister,
 	},

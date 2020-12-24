@@ -8,10 +8,13 @@ import (
 	mysql2 "gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	gloger "gorm.io/gorm/logger"
+	"time"
 )
 
 type BaseModel struct {
-	ID uint64
+	ID uint64 `gorm:"column:id;primaryKey;autoIncrement;not null"`
+	CreatedAt time.Time `gorm:"column:created_at;index"`
+	UpdatedAt time.Time `gorm:"column:updated_at;index"`
 }
 
 func (model BaseModel) GetStringID() string {

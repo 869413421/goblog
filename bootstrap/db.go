@@ -26,5 +26,8 @@ func SetupDB() {
 }
 
 func migration(db *gorm.DB) {
+	db.Set("gorm:table_options", "ENGINE=InnoDB")
+	db.Set("gorm:table_options", "Charset=utf8")
 	db.AutoMigrate(&article.Article{}, &user.User{})
+
 }

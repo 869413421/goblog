@@ -7,8 +7,8 @@ import (
 
 type Article struct {
 	model.BaseModel
-	Title string
-	Body  string
+	Title string `gorm:"column:title;type:varchar(255);not null"`
+	Body  string `gorm:"column:body;type:text;not null"`
 }
 
 // Link 方法用来生成文章链接
