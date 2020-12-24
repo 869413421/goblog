@@ -11,11 +11,13 @@ func ValidateRegistrationForm(data user.User) map[string][]string {
 			"required",
 			"alpha_num",
 			"between:3,30",
+			"not_exists:users,name",
 		},
 		"email": []string{
 			"required",
 			"email",
 			"between:3,30",
+			"not_exists:users,email",
 		},
 		"password": []string{
 			"required",
