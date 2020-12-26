@@ -101,6 +101,12 @@ var Routes = WebRoutes{
 		Pattern: "/auth/do-login",
 		Handle:  new(controllers.AuthController).DoLogin,
 	},
+	{
+		Name:    "auth.logout",
+		Method:  "POST",
+		Pattern: "/auth/logout",
+		Handle:  new(controllers.AuthController).Logout,
+	},
 }
 
 var NotFountHandler = http.HandlerFunc(new(controllers.PagesController).NotFound)

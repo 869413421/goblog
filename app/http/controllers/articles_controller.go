@@ -71,7 +71,7 @@ func (controller *ArticlesController) Store(w http.ResponseWriter, r *http.Reque
 		w.WriteHeader(http.StatusInternalServerError)
 		fmt.Fprintf(w, "创建失败，服务器错误")
 	}
-	fmt.Fprintf(w, "创建成功，ID:"+_article.GetStringID())
+	http.Redirect(w, r, route.Name2URL("articles.show", "id", _article.GetStringID()), http.StatusFound)
 }
 
 func (controller *ArticlesController) Show(w http.ResponseWriter, r *http.Request) {
@@ -110,9 +110,10 @@ func (controller *ArticlesController) Edit(w http.ResponseWriter, r *http.Reques
 	}
 
 	data := view.D{
-		"Title":  _article.Title,
-		"Body":   _article.Body,
-		"Errors": nil,
+		"Title":   _article.Title,
+		"Body":    _article.Body,
+		"Article": _article,
+		"Errors":  view.D{},
 	}
 
 	view.Render(w, data, "article.edit", "article._form_field")

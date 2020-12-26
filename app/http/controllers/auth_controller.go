@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"goblog/app/http/requests"
 	"goblog/pkg/auth"
 	"goblog/pkg/model/user"
@@ -43,11 +42,15 @@ func (controller *AuthController) DoRegister(w http.ResponseWriter, r *http.Requ
 	//3.验证成功入库，跳转首页
 	_user.Create()
 	if _user.ID <= 0 {
-		fmt.Fprint(w, "创建用户失败")
+		view.RenderSimple(w, view.D{
+			"Errors": errs,
+			"User":   _user,
+		}, "auth.register")
 		return
 	}
 
-	fmt.Fprint(w, "创建用户成功，ID:"+_user.GetStringID())
+	auth.Login(_user)
+	http.Redirect(w, r, "/", http.StatusFound)
 }
 
 func (controller *AuthController) Login(w http.ResponseWriter, r *http.Request) {
@@ -72,5 +75,10 @@ func (controller *AuthController) DoLogin(w http.ResponseWriter, r *http.Request
 		return
 	}
 
-	http.Redirect(w, r, "/article", http.StatusFound)
+	http.Redirect(w, r, "/articles", http.StatusFound)
+}
+
+func (controller *AuthController) Logout(w http.ResponseWriter, r *http.Request) {
+	auth.Logout()
+	http.Redirect(w, r, "/", http.StatusFound)
 }
