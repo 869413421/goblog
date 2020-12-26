@@ -3,6 +3,7 @@ package routes
 import (
 	"github.com/gorilla/mux"
 	"goblog/app/http/controllers"
+	"goblog/app/http/middlewares"
 	"net/http"
 )
 
@@ -20,7 +21,7 @@ var Routes = WebRoutes{
 		Name:    "home",
 		Method:  "get",
 		Pattern: "/",
-		Handle:  new(controllers.PagesController).Home,
+		Handle:  new(controllers.ArticlesController).Index,
 	},
 	{
 		Name:    "about",
@@ -111,4 +112,5 @@ func RegisterWebRoutes(router *mux.Router) {
 	}
 	//全局中间件
 	//router.Use(middlewares.ForceHTML)
+	router.Use(middlewares.StartSession)
 }

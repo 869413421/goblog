@@ -10,3 +10,7 @@ type User struct {
 	// gorm:"-" 使用这个注解GORM读写会忽略这个字段
 	PasswordComfirm string `gorm:"-" valid:"password_comfirm"`
 }
+
+func (user *User) ComparePassword(password string) bool {
+	return user.Password == password
+}

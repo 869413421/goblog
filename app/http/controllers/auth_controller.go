@@ -3,6 +3,7 @@ package controllers
 import (
 	"fmt"
 	"goblog/app/http/requests"
+	"goblog/pkg/auth"
 	"goblog/pkg/model/user"
 	"goblog/pkg/view"
 	"net/http"
@@ -53,7 +54,23 @@ func (controller *AuthController) Login(w http.ResponseWriter, r *http.Request) 
 	view.RenderSimple(w, view.D{}, "auth.login")
 }
 
-
 func (controller *AuthController) DoLogin(w http.ResponseWriter, r *http.Request) {
-	view.RenderSimple(w, view.D{}, "auth.login")
+	//1.获取表单数据
+	email := r.PostFormValue("email")
+	password := r.PostFormValue("password")
+
+	//2.用户认证
+	err := auth.Attempt(email, password)
+
+	//3.根据认证成功状态跳转
+	if err != nil {
+		view.RenderSimple(w, view.D{
+			"Error":    err.Error(),
+			"Email":    email,
+			"Password": password,
+		}, "auth.login")
+		return
+	}
+
+	http.Redirect(w, r, "/article", http.StatusFound)
 }

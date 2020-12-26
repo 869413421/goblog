@@ -15,18 +15,21 @@ type ArticlesController struct {
 }
 
 func (controller *ArticlesController) Index(w http.ResponseWriter, r *http.Request) {
-	data, err := article.GetAll()
+	articles, err := article.GetAll()
 	if err != nil {
 		logger.Danger(err, "ArticlesController Index Error")
 		fmt.Fprintln(w, err)
 	}
 
-	view.Render(w, data, "article.index")
+	view.Render(w, view.D{
+		"Articles": articles,
+	}, "article.index")
 }
 
 func (controller *ArticlesController) Create(w http.ResponseWriter, r *http.Request) {
 	view.Render(w, view.D{}, "article.create", "article._form_field")
 }
+
 func ValidateArticlesFromData(title string, body string) map[string]string {
 	errors := make(map[string]string)
 
@@ -86,7 +89,9 @@ func (controller *ArticlesController) Show(w http.ResponseWriter, r *http.Reques
 		}
 	}
 
-	view.Render(w, _article, "article.show")
+	view.Render(w, view.D{
+		"Article": _article,
+	}, "article.show")
 }
 
 func (controller *ArticlesController) Edit(w http.ResponseWriter, r *http.Request) {
@@ -105,10 +110,9 @@ func (controller *ArticlesController) Edit(w http.ResponseWriter, r *http.Reques
 	}
 
 	data := view.D{
-		"Title":   _article.Title,
-		"Body":    _article.Body,
-		"Article": _article,
-		"Errors":  nil,
+		"Title":  _article.Title,
+		"Body":   _article.Body,
+		"Errors": nil,
 	}
 
 	view.Render(w, data, "article.edit", "article._form_field")
