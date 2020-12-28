@@ -551,3 +551,99 @@ ERROR 2020/12/28 10:55:00 logger.go:33: <nil> start session error
 ERROR 2020/12/28 10:55:00 logger.go:33: <nil> start session error
 ERROR 2020/12/28 10:55:00 logger.go:33: <nil> start session error
 ERROR 2020/12/28 10:55:00 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:33:07 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:33:07 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:33:07 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:33:07 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:33:08 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:33:08 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:33:14 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:33:14 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:33:14 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:33:14 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:36:05 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:36:05 logger.go:33: open resources/views/articles/create.html: The system cannot find the path specified. render error
+ERROR 2020/12/28 11:36:05 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:36:05 logger.go:33: open resources/views/articles/create.html: The system cannot find the path specified. render error
+ERROR 2020/12/28 11:36:05 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:36:05 logger.go:33: open resources/views/articles/create.html: The system cannot find the path specified. render error
+ERROR 2020/12/28 11:38:55 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:38:55 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:38:55 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:38:55 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:38:55 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:38:55 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:39:01 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:39:01 logger.go:33: open resources/views/articles/create.html: The system cannot find the path specified. render error
+ERROR 2020/12/28 11:39:01 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:39:01 logger.go:33: open resources/views/articles/create.html: The system cannot find the path specified. render error
+ERROR 2020/12/28 11:39:01 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:39:01 logger.go:33: open resources/views/articles/create.html: The system cannot find the path specified. render error
+ERROR 2020/12/28 11:39:01 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:39:01 logger.go:33: open resources/views/articles/create.html: The system cannot find the path specified. render error
+ERROR 2020/12/28 11:40:34 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:40:34 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:40:34 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:40:34 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:40:34 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:40:34 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:41:07 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:41:07 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:41:07 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:41:07 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:41:08 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:41:08 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:43:05 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:43:05 logger.go:33: open resources/views/articles/create.html: The system cannot find the path specified. render error
+ERROR 2020/12/28 11:43:05 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:43:05 logger.go:33: open resources/views/articles/create.html: The system cannot find the path specified. render error
+ERROR 2020/12/28 11:43:05 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:43:05 logger.go:33: open resources/views/articles/create.html: The system cannot find the path specified. render error
+ERROR 2020/12/28 11:43:05 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:43:05 logger.go:33: open resources/views/articles/create.html: The system cannot find the path specified. render error
+ERROR 2020/12/28 11:47:47 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:47:48 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:47:48 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:47:48 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:47:48 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:47:48 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:57:38 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:57:39 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:57:39 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:57:39 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:57:39 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:57:39 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:57:49 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:57:50 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:57:50 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:57:50 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:57:50 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:57:51 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:57:51 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:57:52 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:57:53 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:57:53 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:57:53 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:57:53 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:57:53 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:57:58 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:57:59 logger.go:33: open resources/views/articles/edit.html: The system cannot find the path specified. render error
+ERROR 2020/12/28 11:57:59 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:57:59 logger.go:33: open resources/views/articles/edit.html: The system cannot find the path specified. render error
+ERROR 2020/12/28 11:57:59 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:57:59 logger.go:33: open resources/views/articles/edit.html: The system cannot find the path specified. render error
+ERROR 2020/12/28 11:57:59 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:58:00 logger.go:33: open resources/views/articles/edit.html: The system cannot find the path specified. render error
+ERROR 2020/12/28 11:58:53 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:58:53 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:58:53 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:58:53 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:58:54 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:58:54 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:59:03 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:59:04 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:59:04 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:59:04 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:59:04 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:59:05 logger.go:33: <nil> start session error
+ERROR 2020/12/28 11:59:05 logger.go:33: <nil> start session error

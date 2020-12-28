@@ -42,7 +42,7 @@ func (controller *ArticlesController) Store(w http.ResponseWriter, r *http.Reque
 		view.Render(w, view.D{
 			"Article": _article,
 			"Errors":  errors,
-		}, "articles.create", "articles._form_field")
+		}, "article.create", "article._form_field")
 	}
 
 	err := _article.Create()
@@ -92,7 +92,7 @@ func (controller *ArticlesController) Edit(w http.ResponseWriter, r *http.Reques
 	view.Render(w, view.D{
 		"Article": _article,
 		"Errors":  view.D{},
-	}, "articles.edit", "articles._form_field")
+	}, "article.edit", "article._form_field")
 
 }
 
@@ -122,7 +122,7 @@ func (controller *ArticlesController) Update(w http.ResponseWriter, r *http.Requ
 		view.Render(w, view.D{
 			"Article": _article,
 			"Errors":  errors,
-		}, "articles.edit", "articles._form_field")
+		}, "article.edit", "article._form_field")
 	}
 
 	rowsAffected, err := _article.Update()

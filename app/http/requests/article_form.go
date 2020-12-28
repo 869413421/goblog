@@ -20,8 +20,7 @@ func ValidateArticleForm(data article.Article) map[string][]string {
 	messages := govalidator.MapData{
 		"title": []string{
 			"required:标题为必填项",
-			"min:标题长度需大于 3",
-			"max:标题长度需小于 40",
+			"between:标题长度需大于 2,小于50",
 		},
 		"body": []string{
 			"required:文章内容为必填项",
@@ -30,7 +29,7 @@ func ValidateArticleForm(data article.Article) map[string][]string {
 	}
 
 	opts := govalidator.Options{
-		Data:          data,
+		Data:          &data,
 		Rules:         rules,
 		Messages:      messages,
 		TagIdentifier: "valid",
