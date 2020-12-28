@@ -3,6 +3,7 @@ package controllers
 import (
 	"goblog/app/http/requests"
 	"goblog/pkg/auth"
+	"goblog/pkg/flash"
 	"goblog/pkg/model/user"
 	"goblog/pkg/view"
 	"net/http"
@@ -48,7 +49,7 @@ func (controller *AuthController) DoRegister(w http.ResponseWriter, r *http.Requ
 		}, "auth.register")
 		return
 	}
-
+	flash.Success("注册成功")
 	auth.Login(_user)
 	http.Redirect(w, r, "/", http.StatusFound)
 }
@@ -67,6 +68,7 @@ func (controller *AuthController) DoLogin(w http.ResponseWriter, r *http.Request
 
 	//3.根据认证成功状态跳转
 	if err != nil {
+		flash.Danger("验证失败，请确认账号密码")
 		view.RenderSimple(w, view.D{
 			"Error":    err.Error(),
 			"Email":    email,
@@ -74,11 +76,12 @@ func (controller *AuthController) DoLogin(w http.ResponseWriter, r *http.Request
 		}, "auth.login")
 		return
 	}
-
+	flash.Success("登陆成功")
 	http.Redirect(w, r, "/articles", http.StatusFound)
 }
 
 func (controller *AuthController) Logout(w http.ResponseWriter, r *http.Request) {
 	auth.Logout()
+	flash.Success("登出成功")
 	http.Redirect(w, r, "/", http.StatusFound)
 }

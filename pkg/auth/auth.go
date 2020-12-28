@@ -2,7 +2,6 @@ package auth
 
 import (
 	"errors"
-	"fmt"
 	"goblog/pkg/model/user"
 	"goblog/pkg/session"
 	"gorm.io/gorm"
@@ -34,8 +33,7 @@ func User() user.User {
 func Attempt(email string, password string) error {
 	//1.根据邮箱获取用户
 	user, err := user.GetByEmail(email)
-	fmt.Println("==========读取数据库===========")
-	fmt.Println(err)
+
 	//2.判断获取用户信息是否出错
 	if err != nil {
 		if err == gorm.ErrRecordNotFound {

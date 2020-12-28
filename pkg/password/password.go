@@ -1,6 +1,7 @@
 package password
 
 import (
+	"fmt"
 	"goblog/pkg/logger"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -18,7 +19,7 @@ func Hash(password string) string {
 //检查密码和hash是否匹配
 func CheckHash(password string, hash string) bool {
 	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
-
+	fmt.Println(err)
 	return err == nil
 }
 
