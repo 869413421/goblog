@@ -2,13 +2,13 @@ package controllers
 
 import (
 	"fmt"
+	"goblog/app/http/requests"
 	"goblog/pkg/logger"
 	"goblog/pkg/model/article"
 	"goblog/pkg/route"
 	"goblog/pkg/view"
 	"gorm.io/gorm"
 	"net/http"
-	"unicode/utf8"
 )
 
 type ArticlesController struct {
@@ -30,40 +30,19 @@ func (controller *ArticlesController) Create(w http.ResponseWriter, r *http.Requ
 	view.Render(w, view.D{}, "article.create", "article._form_field")
 }
 
-func ValidateArticlesFromData(title string, body string) map[string]string {
-	errors := make(map[string]string)
-
-	if title == "" {
-		errors["title"] = "标题不允许为空"
-	} else if utf8.RuneCountInString(title) < 2 || utf8.RuneCountInString(title) > 100 {
-		errors["title"] = "标题长度需介于 3-40"
-	}
-
-	if body == "" {
-		errors["body"] = "内容不允许为空"
-	} else if utf8.RuneCountInString(body) < 3 || utf8.RuneCountInString(body) > 2000 {
-		errors["body"] = "内容长度需介于 3-2000"
-	}
-	return errors
-}
 func (controller *ArticlesController) Store(w http.ResponseWriter, r *http.Request) {
 	title := r.PostFormValue("title")
 	body := r.PostFormValue("body")
-
-	errors := ValidateArticlesFromData(title, body)
-	if len(errors) > 0 {
-		data := view.D{
-			"Title":  title,
-			"Body":   body,
-			"Errors": errors,
-		}
-
-		view.Render(w, data, "article.create", "article._form_field")
-	}
-
 	_article := article.Article{
 		Title: title,
 		Body:  body,
+	}
+	errors := requests.ValidateArticleForm(_article)
+	if len(errors) > 0 {
+		view.Render(w, view.D{
+			"Article": _article,
+			"Errors":  errors,
+		}, "articles.create", "articles._form_field")
 	}
 
 	err := _article.Create()
@@ -109,14 +88,12 @@ func (controller *ArticlesController) Edit(w http.ResponseWriter, r *http.Reques
 		}
 	}
 
-	data := view.D{
-		"Title":   _article.Title,
-		"Body":    _article.Body,
+	// 4. 读取成功，显示编辑文章表单
+	view.Render(w, view.D{
 		"Article": _article,
 		"Errors":  view.D{},
-	}
+	}, "articles.edit", "articles._form_field")
 
-	view.Render(w, data, "article.edit", "article._form_field")
 }
 
 func (controller *ArticlesController) Update(w http.ResponseWriter, r *http.Request) {
@@ -136,19 +113,17 @@ func (controller *ArticlesController) Update(w http.ResponseWriter, r *http.Requ
 
 	title := r.PostFormValue("title")
 	body := r.PostFormValue("body")
-
-	errors := ValidateArticlesFromData(title, body)
-	if len(errors) > 0 {
-		data := view.D{
-			"Title":  title,
-			"Body":   body,
-			"Errors": nil,
-		}
-
-		view.Render(w, data, "article.create", "article._form_field")
-	}
 	_article.Title = title
 	_article.Body = body
+
+	errors := requests.ValidateArticleForm(_article)
+	if len(errors) > 0 {
+		// 4.3 表单验证不通过，显示理由
+		view.Render(w, view.D{
+			"Article": _article,
+			"Errors":  errors,
+		}, "articles.edit", "articles._form_field")
+	}
 
 	rowsAffected, err := _article.Update()
 
