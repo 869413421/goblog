@@ -19,6 +19,7 @@ type WebRoutes []WebRouter
 var auth = new(controllers.AuthController)
 var article = new(controllers.ArticlesController)
 var page = new(controllers.PagesController)
+var user = new(controllers.UserController)
 
 var Routes = WebRoutes{
 	{
@@ -110,6 +111,12 @@ var Routes = WebRoutes{
 		Method:  "POST",
 		Pattern: "/auth/logout",
 		Handle:  middlewares.Auth(auth.Logout),
+	},
+	{
+		Name:    "user.show",
+		Method:  "get",
+		Pattern: "/user/{id:[0-9]+}",
+		Handle:  user.Show,
 	},
 }
 

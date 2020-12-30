@@ -6,9 +6,15 @@ import (
 	"goblog/pkg/types"
 )
 
-func GetById(idStr string) (article Article, err error) {
+func GetById(idStr string) (Article, error) {
 	id := types.StringToInt(idStr)
-	err = model.DB.Preload("User").First(&article, id).Error
+	article := Article{}
+	err := model.DB.Preload("User").First(&article, id).Error
+	return article, err
+}
+
+func GetByUserID(uid string) (articles []Article, err error) {
+	err = model.DB.Preload("User").Where("user_id = ?", uid).Find(&articles).Error
 	return
 }
 

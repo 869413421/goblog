@@ -3,6 +3,8 @@ package controllers
 import (
 	"fmt"
 	"goblog/app/http/requests"
+	"goblog/app/policies"
+	"goblog/pkg/flash"
 	"goblog/pkg/logger"
 	"goblog/pkg/model/article"
 	"goblog/pkg/route"
@@ -61,15 +63,18 @@ func (controller *ArticlesController) Show(w http.ResponseWriter, r *http.Reques
 			//未找到文章
 			w.WriteHeader(http.StatusNotFound)
 			fmt.Fprintln(w, "文章未找到")
+			return
 		} else
 		{
 			logger.Danger(err, "ArticlesController Show Error")
 			fmt.Fprintln(w, err)
+			return
 		}
 	}
 
 	view.Render(w, view.D{
-		"Article": _article,
+		"Article":          _article,
+		"CanModifyArticle": policies.CanModifyArticle(_article),
 	}, "article.show", "article._article_meta")
 }
 
@@ -88,7 +93,12 @@ func (controller *ArticlesController) Edit(w http.ResponseWriter, r *http.Reques
 		}
 	}
 
-	// 4. 读取成功，显示编辑文章表单
+	if !policies.CanModifyArticle(_article) {
+		flash.Warning("未授权操作！")
+		http.Redirect(w, r, "/", http.StatusFound)
+		return
+	}
+
 	view.Render(w, view.D{
 		"Article": _article,
 		"Errors":  view.D{},
@@ -109,6 +119,12 @@ func (controller *ArticlesController) Update(w http.ResponseWriter, r *http.Requ
 			logger.Danger(err, "ArticlesController Show Error")
 			fmt.Fprintln(w, err)
 		}
+	}
+
+	if !policies.CanModifyArticle(_article) {
+		flash.Warning("未授权操作！")
+		http.Redirect(w, r, "/", http.StatusFound)
+		return
 	}
 
 	title := r.PostFormValue("title")
@@ -154,6 +170,12 @@ func (controller *ArticlesController) Delete(w http.ResponseWriter, r *http.Requ
 		w.WriteHeader(http.StatusInternalServerError)
 		logger.Danger(err, "articlesController error")
 		fmt.Fprint(w, "服务器错误")
+	}
+
+	if !policies.CanModifyArticle(_article) {
+		flash.Warning("你没有权限删除")
+		http.Redirect(w, r, "/", http.StatusFound)
+		return
 	}
 
 	rowsAffected, err := _article.Delete()
