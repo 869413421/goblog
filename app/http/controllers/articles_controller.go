@@ -23,7 +23,7 @@ func (controller *ArticlesController) Index(w http.ResponseWriter, r *http.Reque
 
 	view.Render(w, view.D{
 		"Articles": articles,
-	}, "article.index")
+	}, "article.index", "article._article_meta")
 }
 
 func (controller *ArticlesController) Create(w http.ResponseWriter, r *http.Request) {
@@ -70,7 +70,7 @@ func (controller *ArticlesController) Show(w http.ResponseWriter, r *http.Reques
 
 	view.Render(w, view.D{
 		"Article": _article,
-	}, "article.show")
+	}, "article.show", "article._article_meta")
 }
 
 func (controller *ArticlesController) Edit(w http.ResponseWriter, r *http.Request) {

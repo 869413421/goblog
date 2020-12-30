@@ -647,3 +647,103 @@ ERROR 2020/12/28 11:59:04 logger.go:33: <nil> start session error
 ERROR 2020/12/28 11:59:04 logger.go:33: <nil> start session error
 ERROR 2020/12/28 11:59:05 logger.go:33: <nil> start session error
 ERROR 2020/12/28 11:59:05 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:28:41 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:28:44 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:28:45 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:28:45 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:28:45 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:28:45 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:28:56 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:28:56 logger.go:33: <nil> Save session error
+ERROR 2020/12/30 15:28:56 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:28:56 logger.go:33: <nil> Save session error
+ERROR 2020/12/30 15:29:04 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:29:04 logger.go:33: <nil> Save session error
+ERROR 2020/12/30 15:29:05 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:29:05 logger.go:33: <nil> Save session error
+ERROR 2020/12/30 15:29:33 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:29:33 logger.go:33: <nil> Save session error
+ERROR 2020/12/30 15:29:33 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:29:33 logger.go:33: <nil> Save session error
+ERROR 2020/12/30 15:47:12 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:47:13 logger.go:33: open resources/views/articles/_article_meta.html: The system cannot find the path specified. render error
+ERROR 2020/12/30 15:47:13 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:47:13 logger.go:33: open resources/views/articles/_article_meta.html: The system cannot find the path specified. render error
+ERROR 2020/12/30 15:47:13 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:47:13 logger.go:33: open resources/views/articles/_article_meta.html: The system cannot find the path specified. render error
+ERROR 2020/12/30 15:47:13 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:47:14 logger.go:33: open resources/views/articles/_article_meta.html: The system cannot find the path specified. render error
+ERROR 2020/12/30 15:47:19 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:47:19 logger.go:33: open resources/views/articles/_article_meta.html: The system cannot find the path specified. render error
+ERROR 2020/12/30 15:47:19 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:47:19 logger.go:33: open resources/views/articles/_article_meta.html: The system cannot find the path specified. render error
+ERROR 2020/12/30 15:47:19 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:47:19 logger.go:33: open resources/views/articles/_article_meta.html: The system cannot find the path specified. render error
+ERROR 2020/12/30 15:47:49 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:47:50 logger.go:33: open resources/views/articles/_article_meta.html: The system cannot find the path specified. render error
+ERROR 2020/12/30 15:47:50 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:47:50 logger.go:33: open resources/views/articles/_article_meta.html: The system cannot find the path specified. render error
+ERROR 2020/12/30 15:47:50 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:47:50 logger.go:33: open resources/views/articles/_article_meta.html: The system cannot find the path specified. render error
+ERROR 2020/12/30 15:48:50 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:48:50 logger.go:33: open resources/views/articles/_article_meta.html: The system cannot find the path specified. render error
+ERROR 2020/12/30 15:48:50 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:48:50 logger.go:33: open resources/views/articles/_article_meta.html: The system cannot find the path specified. render error
+ERROR 2020/12/30 15:48:50 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:48:51 logger.go:33: open resources/views/articles/_article_meta.html: The system cannot find the path specified. render error
+ERROR 2020/12/30 15:49:09 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:49:12 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:49:31 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:49:32 logger.go:33: Error 1452: Cannot add or update a child row: a foreign key constraint fails (`goblog`.`articles`, CONSTRAINT `fk_articles_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)) model article create error
+ERROR 2020/12/30 15:59:10 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:59:43 logger.go:33: <nil> start session error
+ERROR 2020/12/30 15:59:43 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:01:29 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:01:29 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:01:29 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:01:29 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:01:29 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:01:29 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:04:38 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:04:38 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:04:38 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:04:38 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:04:38 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:04:39 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:04:39 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:05:59 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:05:59 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:05:59 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:05:59 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:05:59 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:05:59 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:06:01 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:06:01 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:06:01 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:06:01 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:06:02 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:06:02 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:06:04 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:06:04 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:06:04 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:06:04 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:06:04 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:06:04 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:06:37 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:06:38 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:06:38 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:06:38 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:06:38 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:06:38 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:07:06 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:07:06 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:07:06 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:07:06 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:07:06 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:07:06 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:07:45 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:07:45 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:07:45 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:07:45 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:07:46 logger.go:33: <nil> start session error
+ERROR 2020/12/30 16:07:46 logger.go:33: <nil> start session error

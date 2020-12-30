@@ -21,6 +21,10 @@ func (model BaseModel) GetStringID() string {
 	return types.UInt64ToString(model.ID)
 }
 
+func (model BaseModel) CreatedAtDate() string {
+	return model.CreatedAt.Format("2006-01-02")
+}
+
 var DB *gorm.DB
 
 func ConnectDB() *gorm.DB {
