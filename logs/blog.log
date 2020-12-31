@@ -1050,3 +1050,46 @@ ERROR 2020/12/30 18:18:54 logger.go:33: <nil> start session error
 ERROR 2020/12/30 18:18:55 logger.go:33: <nil> start session error
 ERROR 2020/12/30 18:18:55 logger.go:33: <nil> start session error
 ERROR 2020/12/30 18:18:55 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:07:30 logger.go:33: dial tcp 47.94.155.227:3306: connectex: A socket operation was attempted to an unreachable host. gorm open err
+ERROR 2020/12/31 09:07:54 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:07:54 logger.go:33: dial tcp 47.94.155.227:3306: connectex: A socket operation was attempted to an unreachable host. ArticlesController Show Error
+ERROR 2020/12/31 09:08:22 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:08:22 logger.go:33: dial tcp 47.94.155.227:3306: connectex: A socket operation was attempted to an unreachable host. ArticlesController Index Error
+ERROR 2020/12/31 09:08:26 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:08:26 logger.go:33: dial tcp 47.94.155.227:3306: connectex: A socket operation was attempted to an unreachable host. ArticlesController Index Error
+ERROR 2020/12/31 09:09:03 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:09:05 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:09:05 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:09:05 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:09:06 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:09:06 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:09:14 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:09:15 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:09:15 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:09:16 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:29:40 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:29:41 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:29:41 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:29:41 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:30:19 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:30:20 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:30:20 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:30:21 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:31:04 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:31:05 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:31:05 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:31:05 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:31:06 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:31:06 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:32:58 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:32:59 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:32:59 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:32:59 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:32:59 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:33:00 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:33:07 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:33:07 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:33:07 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:33:07 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:33:07 logger.go:33: <nil> start session error
+ERROR 2020/12/31 09:33:07 logger.go:33: <nil> start session error
