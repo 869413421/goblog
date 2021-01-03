@@ -13,5 +13,9 @@
     "MaxConnections": 100,
     "MaxIdeConnections": 25,
     "ConnectionMaxLifeTime": 5
+  },
+  "Pagination": {
+    "PerPage": 10,
+    "UrlQuery": "page"
   }
 }

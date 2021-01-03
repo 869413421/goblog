@@ -20,6 +20,7 @@ var auth = new(controllers.AuthController)
 var article = new(controllers.ArticlesController)
 var page = new(controllers.PagesController)
 var user = new(controllers.UserController)
+var categories = new(controllers.CategoriesController)
 
 var Routes = WebRoutes{
 	{
@@ -117,6 +118,24 @@ var Routes = WebRoutes{
 		Method:  "get",
 		Pattern: "/user/{id:[0-9]+}",
 		Handle:  user.Show,
+	},
+	{
+		Name:    "categories.create",
+		Method:  "get",
+		Pattern: "/categories/create",
+		Handle:  middlewares.Auth(categories.Create),
+	},
+	{
+		Name:    "categories.store",
+		Method:  "POST",
+		Pattern: "/categories/store",
+		Handle:  middlewares.Auth(categories.Store),
+	},
+	{
+		Name:    "categories.show",
+		Method:  "get",
+		Pattern: "/categories/{id:[0-9]+}",
+		Handle:  categories.Show,
 	},
 }
 

@@ -4,28 +4,31 @@ import (
 	"fmt"
 	"goblog/app/http/requests"
 	"goblog/app/policies"
-	"goblog/pkg/flash"
-	"goblog/pkg/logger"
+	"goblog/pkg/auth"
 	"goblog/pkg/model/article"
 	"goblog/pkg/route"
 	"goblog/pkg/view"
-	"gorm.io/gorm"
 	"net/http"
 )
 
 type ArticlesController struct {
+	BaseController
 }
 
 func (controller *ArticlesController) Index(w http.ResponseWriter, r *http.Request) {
-	articles, err := article.GetAll()
-	if err != nil {
-		logger.Danger(err, "ArticlesController Index Error")
-		fmt.Fprintln(w, err)
-	}
+	// 1. 获取结果集
+	articles, pagerData, err := article.GetAll(r, 2)
 
-	view.Render(w, view.D{
-		"Articles": articles,
-	}, "article.index", "article._article_meta")
+	if err != nil {
+		controller.ResponseForSqlError(w, err)
+	} else {
+
+		// ---  2. 加载模板 ---
+		view.Render(w, view.D{
+			"Articles":  articles,
+			"PagerData": pagerData,
+		}, "article.index", "article._article_meta")
+	}
 }
 
 func (controller *ArticlesController) Create(w http.ResponseWriter, r *http.Request) {
@@ -35,9 +38,11 @@ func (controller *ArticlesController) Create(w http.ResponseWriter, r *http.Requ
 func (controller *ArticlesController) Store(w http.ResponseWriter, r *http.Request) {
 	title := r.PostFormValue("title")
 	body := r.PostFormValue("body")
+
 	_article := article.Article{
-		Title: title,
-		Body:  body,
+		Title:  title,
+		Body:   body,
+		UserID: auth.User().ID,
 	}
 	errors := requests.ValidateArticleForm(_article)
 	if len(errors) > 0 {
@@ -59,17 +64,7 @@ func (controller *ArticlesController) Show(w http.ResponseWriter, r *http.Reques
 	id := route.GetRouteVariable("id", r)
 	_article, err := article.GetById(id)
 	if err != nil {
-		if err == gorm.ErrRecordNotFound {
-			//未找到文章
-			w.WriteHeader(http.StatusNotFound)
-			fmt.Fprintln(w, "文章未找到")
-			return
-		} else
-		{
-			logger.Danger(err, "ArticlesController Show Error")
-			fmt.Fprintln(w, err)
-			return
-		}
+		controller.ResponseForSqlError(w, err)
 	}
 
 	view.Render(w, view.D{
@@ -82,21 +77,11 @@ func (controller *ArticlesController) Edit(w http.ResponseWriter, r *http.Reques
 	id := route.GetRouteVariable("id", r)
 	_article, err := article.GetById(id)
 	if err != nil {
-		if err == gorm.ErrRecordNotFound {
-			//未找到文章
-			w.WriteHeader(http.StatusNotFound)
-			fmt.Fprintln(w, "文章未找到")
-		} else
-		{
-			logger.Danger(err, "ArticlesController Show Error")
-			fmt.Fprintln(w, err)
-		}
+		controller.ResponseForSqlError(w, err)
 	}
 
 	if !policies.CanModifyArticle(_article) {
-		flash.Warning("未授权操作！")
-		http.Redirect(w, r, "/", http.StatusFound)
-		return
+		controller.ResponseForUnauthorized(w, r)
 	}
 
 	view.Render(w, view.D{
@@ -110,21 +95,11 @@ func (controller *ArticlesController) Update(w http.ResponseWriter, r *http.Requ
 	id := route.GetRouteVariable("id", r)
 	_article, err := article.GetById(id)
 	if err != nil {
-		if err == gorm.ErrRecordNotFound {
-			//未找到文章
-			w.WriteHeader(http.StatusNotFound)
-			fmt.Fprintln(w, "文章未找到")
-		} else
-		{
-			logger.Danger(err, "ArticlesController Show Error")
-			fmt.Fprintln(w, err)
-		}
+		controller.ResponseForSqlError(w, err)
 	}
 
 	if !policies.CanModifyArticle(_article) {
-		flash.Warning("未授权操作！")
-		http.Redirect(w, r, "/", http.StatusFound)
-		return
+		controller.ResponseForUnauthorized(w, r)
 	}
 
 	title := r.PostFormValue("title")
@@ -163,19 +138,11 @@ func (controller *ArticlesController) Delete(w http.ResponseWriter, r *http.Requ
 	id := route.GetRouteVariable("id", r)
 	_article, err := article.GetById(id)
 	if err != nil {
-		if err == gorm.ErrRecordNotFound {
-			w.WriteHeader(http.StatusNotFound)
-			fmt.Fprint(w, "找不到文章")
-		}
-		w.WriteHeader(http.StatusInternalServerError)
-		logger.Danger(err, "articlesController error")
-		fmt.Fprint(w, "服务器错误")
+		controller.ResponseForSqlError(w, err)
 	}
 
 	if !policies.CanModifyArticle(_article) {
-		flash.Warning("你没有权限删除")
-		http.Redirect(w, r, "/", http.StatusFound)
-		return
+		controller.ResponseForUnauthorized(w, r)
 	}
 
 	rowsAffected, err := _article.Delete()

@@ -25,9 +25,14 @@ type Db struct {
 	ConnectionMaxLifeTime time.Duration
 }
 
+type Pagination struct {
+	PerPage  int
+	UrlQuery string
+}
 type Configuration struct {
-	App App
-	Db  Db
+	App        App
+	Db         Db
+	Pagination Pagination
 }
 
 var config *Configuration

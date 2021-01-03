@@ -4,6 +4,7 @@ import (
 	"goblog/pkg/auth"
 	"goblog/pkg/flash"
 	"goblog/pkg/logger"
+	"goblog/pkg/model/category"
 	"goblog/pkg/route"
 	"html/template"
 	"io"
@@ -25,6 +26,7 @@ func RenderTemplate(writer io.Writer, name string, data D, tmplFiles ...string) 
 	//1.获取全局数据
 	data["isLogined"] = auth.Check()
 	data["flash"] = flash.All()
+	data["Categories"], _ = category.All()
 
 	//2.生成模板解析文件
 	newFiles := getTemplateFiles(tmplFiles...)

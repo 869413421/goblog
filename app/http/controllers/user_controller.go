@@ -7,11 +7,11 @@ import (
 	"goblog/pkg/model/user"
 	"goblog/pkg/route"
 	"goblog/pkg/view"
-	"gorm.io/gorm"
 	"net/http"
 )
 
 type UserController struct {
+	BaseController
 }
 
 func (controller UserController) Show(w http.ResponseWriter, r *http.Request) {
@@ -23,18 +23,7 @@ func (controller UserController) Show(w http.ResponseWriter, r *http.Request) {
 
 	//3.如果发生错误
 	if err != nil {
-		if err == gorm.ErrRecordNotFound {
-			//3.1 找不到用户
-			w.WriteHeader(http.StatusNotFound)
-			fmt.Fprint(w, "找不到用户")
-			return
-		} else {
-			//3.2 内部错误
-			logger.Danger(err, "user show controller error")
-			w.WriteHeader(http.StatusInternalServerError)
-			fmt.Fprint(w, "内部错误")
-			return
-		}
+		controller.ResponseForSqlError(w, err)
 	}
 
 	//4 显示用户文章

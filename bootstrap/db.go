@@ -4,6 +4,7 @@ import (
 	"goblog/config"
 	"goblog/pkg/model"
 	"goblog/pkg/model/article"
+	"goblog/pkg/model/category"
 	"goblog/pkg/model/user"
 	"gorm.io/gorm"
 )
@@ -28,6 +29,5 @@ func SetupDB() {
 func migration(db *gorm.DB) {
 	db.Set("gorm:table_options", "ENGINE=InnoDB")
 	db.Set("gorm:table_options", "Charset=utf8")
-	db.AutoMigrate(&article.Article{}, &user.User{})
-
+	db.AutoMigrate(&article.Article{}, &user.User{},&category.Category{})
 }
